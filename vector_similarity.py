@@ -114,7 +114,7 @@ def cos_sim(vec_in, vec_out):
     num = float(np.matrix(vec_in) * np.matrix(vec_out).T)
     denom = np.linalg.norm(vec_in) * np.linalg.norm(vec_out)
     cos = num / denom # 计算cos的方法
-    sim = 0.5 + 0.5 * cos  # 对最后算出来的cos进行归一化，使它们位于0-1之间
+    sim = np.round(0.5 + 0.5 * cos, 2)  # 对最后算出来的cos进行归一化，使它们位于0-1之间
     print(sim)
     return sim
 
@@ -172,7 +172,7 @@ def analysis_sim():
 # analysis_sim()
 
 
-# *******************************得到加入了BiLSTM模型的方法计算出来的相似性
+# # *******************************得到加入了BiLSTM模型的方法计算出来的相似性
 vec_in, vec_out = get_vectors('肺癌,家属代述来院10分钟前在家中发现患者意识丧失呼之不应、立即送来我院就诊。入院时生命体征消失，心电图提示心室停搏，报临床死亡', '支气管和肺恶性肿瘤')
 # vec_in, vec_out = get_vectors('心力衰竭,心脏增大', '心脏肥大')
 print(type(vec_in))
